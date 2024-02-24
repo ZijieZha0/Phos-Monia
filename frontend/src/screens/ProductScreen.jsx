@@ -2,29 +2,40 @@ import  {useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap';
 import Rating from '../components/Rating';
-import axios from 'axios';
-import {useState, useEffect} from 'react';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+// import axios from 'axios';
+// import {useState, useEffect} from 'react';
+import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
 
 const ProductScreen = () => {
-    const [product, setProduct] = useState([]);
-
+    // const [product, setProduct] = useState([]);
     const {id:productId} = useParams();
     // const product = products.find((p) => p._id === productId);
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const {data} = await axios.get(`/api/products/${productId}`);
-            setProduct(data);
-        }
-        fetchProduct();
-    }, [productId]);
+    // useEffect(() => {
+    //     const fetchProduct = async () => {
+    //         const {data} = await axios.get(`/api/products/${productId}`);
+    //         setProduct(data);
+    //     }
+    //     fetchProduct();
+    // }, [productId]);
+
+    const {data:product, isLoading, error} = useGetProductDetailsQuery(productId);
 
     return (
         <>
             <Link className='btn btn-light my-3' to='/'>
                 Go Back
             </Link>
-            <Row>
+
+            {isLoading ? (
+                <Loader />
+            ) : error ? (
+                <Message variant='danger'>
+                    {error?.data?.message || error.error}
+                </Message>
+            ) : (<Row>
                 <Col md={5}>
                     <Image src={product.image} alt={product.name} fluid />
                 </Col>
@@ -75,7 +86,7 @@ const ProductScreen = () => {
                         </ListGroup>
                     </Card>
                 </Col>
-            </Row>
+            </Row>)}
         </>
     )
 }
