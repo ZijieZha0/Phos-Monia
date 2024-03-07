@@ -8,6 +8,7 @@ import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
+// import Background from '../components/Background';
 // import axios from 'axios';
 // import {useState, useEffect} from 'react';
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice';

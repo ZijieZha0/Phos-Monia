@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+import Background from '../components/Background';
 // import axios from 'axios';
 import Meta from '../components/Meta';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
@@ -26,6 +27,7 @@ const HomeScreen = () => {
 
     return (
         <>
+        <Background />
         {!keyword ? <ProductCarousel /> : (<Link to='/' className='btn btn-light mb-2'>Go Back</Link>)}
             {isLoading ? (
                 <Loader />

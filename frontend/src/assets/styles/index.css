@@ -57,3 +57,45 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* test */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 将背景放置在内容之后 */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 图片填充整个容器 */
+}
+
+
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* 使用 backdrop-filter 实现模糊效果 */
+}
+
+.custom-navbar {
+  background-color: #f2eada;
+  color: white;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar .nav-dropdown .dropdown-item,
+.custom-navbar .navbar-brand {
+  color: #000; /* 或其他深色字体颜色 */
+}
+
+.search-button {
+  color: #000; /* 或其他深色字体颜色 */
+}
